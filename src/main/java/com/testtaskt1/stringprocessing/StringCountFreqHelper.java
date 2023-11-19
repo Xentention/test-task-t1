@@ -13,17 +13,18 @@ public class StringCountFreqHelper implements Callable<Map<String, Integer>> {
 
     /**
      * Считает количество вхождений в строку для каждого символа
+     *
      * @return Map<String, Integer> количество вхождений в формате ключ-значение
      */
     @Override
     public Map<String, Integer> call() {
         Map<String, Integer> result = new HashMap<>();
-        if(string.isEmpty())
+        if (string.isEmpty())
             return result;
 
         String[] entries = string.split("");
-        for(String entry : entries){
-            if(result.containsKey(entry))
+        for (String entry : entries) {
+            if (result.containsKey(entry))
                 result.put(entry, result.get(entry) + 1);
             else
                 result.put(entry, 1);

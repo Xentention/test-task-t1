@@ -21,9 +21,8 @@ public class StringController {
     @PostMapping("/count-character-freq")
     @Operation(summary = "Подсчитывает количество вхождений в строку для каждого символа. " +
             "Результат отсортирован по убыванию количества вхождений.")
-    public ResponseEntity<?> getCharacterFrequencies(@RequestBody String string){
+    public ResponseEntity<?> getCharacterFrequencies(@RequestBody String string) {
         try {
-            string = string.substring(1, string.length() - 1);
             Map<String, Integer> response = StringProcessor.countCharacterFrequencies(string);
             return ResponseEntity.ok(response);
         } catch (ExecutionException | InterruptedException e) {
