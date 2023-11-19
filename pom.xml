@@ -11,7 +11,7 @@
 	<groupId>com</groupId>
 	<artifactId>test-task-t1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>test-task-t1</name>
 	<description>test-task-t1</description>
 	<properties>
