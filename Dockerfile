@@ -1,7 +1,12 @@
-FROM openjdk:17-alpine
-
+FROM openjdk:17-alpine as builder
 RUN mkdir /app
+WORKDIR /app
+COPY . /app
+RUN ./mvnw dependency:go-offline
+RUN ./mvnw clean package
 
-COPY target/*.jar /app/testtask.jar
 
-CMD ["java", "-jar", "/app/testtask.jar"]
+FROM openjdk:17-alpine
+COPY --from=builder /app/target/*.jar /app/testtask.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/testtask.jar"]

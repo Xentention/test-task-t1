@@ -9,8 +9,7 @@
 Из корня проекта:
 
 ```
-mvn clean package
-docker build ./ -t <img_name>
+docker build . -t <img_name>
 docker run --name <cont_name> -p 8080:8080 <img_name>
 ```
 
