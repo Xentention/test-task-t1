@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestStringProcessor {
     @Test
     void testExampleString(){
-        String testString = "\"aaaaabcccc\"";
+        String testString = "aaaaabcccc";
         Map<String, Integer> trueResult = new HashMap<>();
         trueResult.put("a", 5);
         trueResult.put("b", 1);
@@ -27,12 +27,12 @@ public class TestStringProcessor {
     @Test
     void testMultiThread(){
         //560 - a, 6 - c, 6 - b, 2 - k
-        String testString = "\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+        String testString = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaccaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
                 "aaaaaaaaaaaaaakaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb" +
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaccaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaakaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb\"";
+                "aaaaaaaaaaaaaakaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb";
         Map<String, Integer> trueResult = new HashMap<>();
         trueResult.put("a", 560);
         trueResult.put("b", 6);
@@ -50,30 +50,6 @@ public class TestStringProcessor {
     @Test
     void testEmptyString(){
         String testString = "";
-        Map<String, Integer> testMap = new HashMap<>();
-        try {
-            testMap = StringProcessor.countCharacterFrequencies(testString);
-        } catch (ExecutionException | InterruptedException e) {
-            fail("testEmptyString finished with an Exception");
-        }
-        assertTrue(testMap.isEmpty());
-    }
-
-    @Test
-    void testStrLenIsOne(){
-        String testString = "\"";
-        Map<String, Integer> testMap = new HashMap<>();
-        try {
-            testMap = StringProcessor.countCharacterFrequencies(testString);
-        } catch (ExecutionException | InterruptedException e) {
-            fail("testEmptyString finished with an Exception");
-        }
-        assertTrue(testMap.isEmpty());
-    }
-
-    @Test
-    void testStrLenIsTwo(){
-        String testString = "11";
         Map<String, Integer> testMap = new HashMap<>();
         try {
             testMap = StringProcessor.countCharacterFrequencies(testString);

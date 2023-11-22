@@ -19,10 +19,9 @@ public class StringProcessor {
      */
     public static Map<String, Integer> countCharacterFrequencies(String string)
             throws ExecutionException, InterruptedException {
-        if (string.length() <= 2)
+        if (string.length() == 0)
             return new HashMap<>();
 
-        string = string.substring(1, string.length() - 1);
         int subStringLen = 100;
         int threadsNum = string.length() / subStringLen + 1;
 

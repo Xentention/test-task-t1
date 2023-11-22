@@ -1,5 +1,6 @@
 package com.testtaskt1.controllers;
 
+import com.testtaskt1.models.StringModel;
 import com.testtaskt1.stringprocessing.StringProcessor;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,12 +22,15 @@ public class StringController {
     @PostMapping("/count-character-freq")
     @Operation(summary = "Подсчитывает количество вхождений в строку для каждого символа. " +
             "Результат отсортирован по убыванию количества вхождений.")
-    public ResponseEntity<?> getCharacterFrequencies(@RequestBody String string) {
+    public ResponseEntity<?> getCharacterFrequencies(@RequestBody StringModel string) {
+        if(string.getMessage() == null)
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
         try {
-            Map<String, Integer> response = StringProcessor.countCharacterFrequencies(string);
+            Map<String, Integer> response = StringProcessor.countCharacterFrequencies(string.getMessage());
             return ResponseEntity.ok(response);
         } catch (ExecutionException | InterruptedException e) {
-            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Please retry later");
+            return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
         }
     }
 }
